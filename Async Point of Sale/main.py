@@ -1,7 +1,6 @@
 import asyncio
 from inventory import Inventory
-
-
+from utils import * 
 def display_catalogue(catalogue):
     burgers = catalogue["Burgers"]
     sides = catalogue["Sides"]
@@ -38,9 +37,21 @@ def display_catalogue(catalogue):
 
     print("\n------------------------------\n")
 
+def welcome():
+    print("Welcome to the ProgrammingExpert Burger Bar!")
+    print("Loading catalogue...")
+    
 
 async def main():
-    pass
+    inventory = Inventory()
+    welcome()
+    display_catalogue(await inventory.get_catalogue())
+    while True:
+        await program_loop(inventory)
+        x = input("Would you like to make another order (yes/no)? ")
+        if x == "no":
+            break
+    print("Goodbye")
 
 if __name__ == "__main__":
     asyncio.run(main())
