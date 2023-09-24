@@ -66,8 +66,8 @@ def address():
         email = input("Address: ")
         if email == "":
             print("No Address was added.")
-            return email
-        
+        return email      
+    
 def empty(text):
     if text == "":
         return True
